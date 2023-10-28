@@ -1,16 +1,21 @@
 const Sequelize = require('sequelize');
 
-const Poryecto = (sequelize) => {
+const Proyecto = (sequelize) => {
     sequelize.define('proyecto', {
         idProyecto: {
             type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-            alloyNull: false
+            autoIncrement:true,
+            primaryKey:true,
+            allowNull:false
         },
-        nombre: Sequelize.STRING(30),
-        descripcion: Sequelize.STRING
+
+        nombre: {
+            type: Sequelize.STRING(30)
+        },
+        descripcion: {
+            type: Sequelize.STRING
+        }
     })
 };
 
-module.exports = Poryecto;
+module.exports = Proyecto;

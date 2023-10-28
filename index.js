@@ -1,25 +1,28 @@
-// importar las bibliotecas
-
+// Importar bibliotecas
 const express = require("express");
 const app = express();
-// Traer el objeto de conexión
-const sequelize = require('./util/dataBase')
+const personaRoutes = require('./routes/persona')
+const proyectoRoutes = require('./routes/proyecto')
 
-// middleware
+//Objeto de conexión
+const sequelize = require('./util/database');
+
+//middleware
 app.use(express.json());
+app.use('/persona', personaRoutes)
+app.use('/proyecto', proyectoRoutes)
 
-//Mala practica
-app.get('/test', (request, response) => {
-    console.log("Esto no se debe de hacer pero funciona");
-    response.send('<h1>Servidor funcionando</h1>');
-})
+// Malas prácticas
+// app.get('/test', (request,response) => {
+//     console.log("Esto no se debe de hacer, pero funciona")
+//     response.send('<h1>Servidor Funcionando</h1>');
+// });
 
-//levantar el server y escuchar peticiones 
-sequelize.sync()
+//levantar el server y escuchar peticiones
+sequelize.sync(/*{force:true}*/)
     .then(result => {
         app.listen(8080, () => {
             console.log("Servidor escuchando")
         })
     })
-    .catch(error => console.log(error));
-
+    .catch(error => console.log(error))

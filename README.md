@@ -1,1 +1,1 @@
-# semanaTec-js
+# semanatec-js

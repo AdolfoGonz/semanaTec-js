@@ -4,11 +4,14 @@ const Persona = (sequelize) => {
     sequelize.define('persona', {
         idPersona: {
             type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-            alloyNull: false
+            autoIncrement:true,
+            primaryKey:true,
+            allowNull:false
         },
-        nombre: Sequelize.STRING(50),
+
+        nombre: {
+            type: Sequelize.STRING(50)
+        }
     })
 };
 
